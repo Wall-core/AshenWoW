@@ -65,12 +65,12 @@ struct npc_corporal_keeshan_escortAI : npc_escortAI
 
     void JustRespawned() override
     {
-        // Reset
+        // Reset EscortAI
         npc_escortAI::JustRespawned();
-        Reset();                // unsere Timer
+        Reset(); 
         float m_homeX, m_homeY, m_homeZ, m_homeO;
 
-        //Reset Faction and Quest Giver
+        //Reset Faction and Quest Giver Flag
         m_creature->SetFactionTemplateId(FACTION_STORMWIND);
         m_creature->SetFlag(UNIT_NPC_FLAGS, UNIT_NPC_FLAG_QUESTGIVER);
 
