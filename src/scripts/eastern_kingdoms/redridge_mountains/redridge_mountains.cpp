@@ -57,8 +57,6 @@ struct npc_corporal_keeshan_escortAI : npc_escortAI
     uint32 m_uiMockingBlowTimer;
     uint32 m_uiShieldBashTimer;
 
-    // --- Respawn/Home Cache ---
-
     void Reset() override
     {
         m_uiMockingBlowTimer = 5000;
