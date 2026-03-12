@@ -8399,6 +8399,11 @@ void Spell::ResetEffectDamageAndHeal()
     m_absorbed = 0;
 }
 
+void Spell::SetClientStarted(bool bisClientStarted)
+{
+    m_isClientStarted = bisClientStarted;
+}
+
 void Spell::OnSpellLaunch()
 {
     if (!m_casterUnit || !m_casterUnit->IsInWorld())
