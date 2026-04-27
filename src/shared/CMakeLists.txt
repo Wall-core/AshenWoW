@@ -42,6 +42,8 @@ set (shared_SRCS
     Config/ConfigEnv.h
     Crypto/BigNumber.h
     Crypto/BigNumber.cpp
+    Crypto/CryptoUtils.h
+    Crypto/CryptoUtils.cpp
     Crypto/InitializeCrypto.h
     Crypto/InitializeCrypto.cpp
     Crypto/Authentication/SRP6.h
@@ -81,6 +83,7 @@ set (shared_SRCS
     nonstd/expected.hpp
     nonstd/nodiscard.hpp
     nonstd/optional.hpp
+    nonstd/saturating_cast.hpp
     TimePeriod.h
     ByteBuffer.cpp
     Common.cpp
