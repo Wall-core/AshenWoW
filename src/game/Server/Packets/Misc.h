@@ -567,6 +567,7 @@ namespace WorldPackets { namespace Misc
 
     struct ForcedReactionEntry
     {
+        ForcedReactionEntry() = default;
         ForcedReactionEntry(uint32 faction, uint32 rank) : factionId(faction), reputationRank(rank) {}
 
         uint32 factionId = 0;       // Faction ID (Faction.dbc)
@@ -584,6 +585,7 @@ namespace WorldPackets { namespace Misc
 
     struct FactionStandingEntry
     {
+        FactionStandingEntry() = default;
         FactionStandingEntry(uint32 repId, int32 repStanding) : reputationListId(repId), standing(repStanding) {}
 
         uint32 reputationListId = 0; // Reputation list ID
