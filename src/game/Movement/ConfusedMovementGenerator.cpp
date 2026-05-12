@@ -31,7 +31,7 @@ void ConfusedMovementGenerator<T>::Initialize(T &unit)
     // set initial position
     unit.GetSafePosition(i_x, i_y, i_z, unit.GetTransport());
 
-    if (!unit.movespline->finalized())
+    if (!unit.movespline->Finalized())
         unit.StopMoving();
     unit.AddUnitState(UNIT_STATE_CONFUSED);
     unit.UpdateControl();
@@ -61,7 +61,7 @@ bool ConfusedMovementGenerator<T>::Update(T &unit, uint32 const& diff)
         if (pPlayer->IsBeingTeleported())
             return true;
 
-    if (!unit.movespline->finalized())
+    if (!unit.movespline->Finalized())
         return true;
 
     float x = i_x, y = i_y, z = i_z;
