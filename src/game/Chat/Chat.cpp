@@ -1918,7 +1918,7 @@ void ChatHandler::ExecuteCommand(char const* text)
                 }
                 else                                        // 0 account -> console
                 {
-                    sLog.Player(GetAccountId(), LOG_GM, LOG_LVL_BASIC, "Command: %s [Account: %u from %s]",
+                    sLog.Player(GetAccountId(), LOG_GM, LOG_LVL_DEBUG, "Command: %s [Account: %u from %s]",
                         realCommandFull.c_str(), GetAccountId(), GetAccountId() ? "RA-connection" : "Console");
                 }
             }

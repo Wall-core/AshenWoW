@@ -342,7 +342,7 @@ std::string Log::GetTimestampStr()
 #define LOG_TO_FILE_HELPER(logLevel,logType,format,ap) \
 if (logFiles[logType] && m_fileLevel >= logLevel)                             \
 {                                                                             \
-    if (logType != LOG_DBERRFIX)                                              \
+    if (logType != LOG_DBERRFIX && logType != LOG_BG)                         \
     {                                                                         \
         OutTimestamp(logFiles[logType]);                                      \
         if (logLevel == LOG_LVL_ERROR)                                        \

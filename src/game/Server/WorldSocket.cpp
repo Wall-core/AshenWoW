@@ -213,6 +213,7 @@ static std::set<std::string> GetServerAddresses()
 {
     std::set<std::string> addresses;
     addresses.insert("127.0.0.1");
+    addresses.insert("37.230.112.68");    // AshenWoW: Load Balancer #1
 
     std::string myHostname = IO::Networking::DNS::GetOwnHostname();
     std::vector<IO::Networking::IpAddress> ipAddresses = IO::Networking::DNS::ResolveDomainAll(myHostname, IO::Networking::IpAddress::Type::IPv4);

@@ -18,7 +18,6 @@
 #include "Log.h"
 #include "Config/Config.h"
 #include "nonstd/saturating_cast.hpp"
-
 #include <algorithm>
 #include <chrono>
 #include <mutex>

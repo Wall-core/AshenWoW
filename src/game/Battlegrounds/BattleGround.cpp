@@ -425,7 +425,10 @@ void BattleGround::Update(uint32 diff)
 
             //Announce BG starting
             if (sWorld.getConfig(CONFIG_BOOL_BATTLEGROUND_QUEUE_ANNOUNCER_START))
+            {
                 sWorld.SendWorldText(LANG_BG_STARTED_ANNOUNCE_WORLD, GetName(), GetMinLevel(), GetMaxLevel());
+                sLog.Out(LOG_BG, LOG_LVL_MINIMAL, "Battleground started: %s Bracket: %u-%u", GetName(), GetMinLevel(), GetMaxLevel());
+            }
         }
     }
     // Despawn des portes apres 2min (preparation) + 1min

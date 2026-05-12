@@ -354,12 +354,14 @@ void AuthSocket::_HandleLogonChallenge()
             return;
         }
 
+
         // Reject early if this IP is currently locked out due to recent wrong-password failures.
         auto wrongPassResult = GetWrongPasswordAttemptsForIp(clientIpAddress);
         if (wrongPassResult.IsBeingThrottled())
         {
             sLog.Out(LOG_BASIC, LOG_LVL_BASIC, "[AuthChallenge] IP '%s' is temporarily locked after %u failed attempts",
                      clientIpAddress.c_str(), wrongPassResult.failedAttempts);
+
             *pkt << uint8(WOW_FAIL_DB_BUSY);
 
             self->m_socket.Write(std::move(pkt), [self](IO::NetworkError const& error)
@@ -446,6 +448,7 @@ void AuthSocket::_HandleLogonChallenge()
             {
                 *pkt << uint8(WOW_FAIL_FAIL_NOACCESS);
                 sLog.Out(LOG_BASIC, LOG_LVL_ERROR, "[AuthChallenge] Broken v/s values in database for account %s!", self->m_login.c_str());
+
                 self->m_socket.Write(std::move(pkt), [self](IO::NetworkError const& error)
                 {
                     if (error)
