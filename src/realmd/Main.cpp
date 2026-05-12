@@ -216,7 +216,6 @@ extern int main(int argc, char** argv)
     LoginDatabase.Execute("DELETE FROM `ip_banned` WHERE `unbandate`<=UNIX_TIMESTAMP() AND `unbandate`<>`bandate`");
     LoginDatabase.CommitTransaction();
 
-    uint32 throttleCleanupIntervalSecs = sConfig.GetIntDefault("ThrottleCleanupSecs", 60);
     std::string bindIp = sConfig.GetStringDefault("BindIP", "0.0.0.0");
     uint16 bindPort = sConfig.GetIntDefault("RealmServerPort", DEFAULT_REALMSERVER_PORT);
 

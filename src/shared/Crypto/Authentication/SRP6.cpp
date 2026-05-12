@@ -26,11 +26,6 @@
 
 #include <openssl/sha.h>
 
-bool Crypto::ConstantTimeEquals(void const* a, void const* b, std::size_t length)
-{
-    return CRYPTO_memcmp(a, b, length) == 0;
-}
-
 SRP6::SRP6()
 {
     N.SetHexStr("894B645E89E1535BBDAD5B8B290650530801B18EBFBF5E8FAB3C82872A3E9BB7");
