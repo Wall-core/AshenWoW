@@ -474,7 +474,7 @@ void BattleGroundQueue::FillPlayersToBg(BattleGround* bg, BattleGroundBracketId 
         ++hordeItr;
 
     //if ofc like BG queue invitation is set in config, then we are happy
-    if (sWorld.getConfig(CONFIG_UINT32_BATTLEGROUND_INVITATION_TYPE) == 0)
+    if (sWorld.getConfig(CONFIG_UINT32_BATTLEGROUND_INVITATION_TYPE) == 0 || (bg && bg->GetTypeID() == BATTLEGROUND_AV))
         return;
 
     /*
@@ -584,7 +584,7 @@ bool BattleGroundQueue::CheckPremadeMatch(BattleGroundBracketId bracketId, uint3
 }
 
 // this method tries to create battleground with minPlayersPerTeam against minPlayersPerTeam
-bool BattleGroundQueue::CheckNormalMatch(BattleGroundBracketId bracketId, uint32 minPlayers, uint32 maxPlayers)
+bool BattleGroundQueue::CheckNormalMatch(BattleGroundTypeId bgTypeId, BattleGroundBracketId bracketId, uint32 minPlayers, uint32 maxPlayers)
 {
     GroupsQueueType::const_iterator itrTeam[BG_TEAMS_COUNT];
     for (uint32 i = 0; i < BG_TEAMS_COUNT; i++)
@@ -605,6 +605,7 @@ bool BattleGroundQueue::CheckNormalMatch(BattleGroundBracketId bracketId, uint32
     if (m_selectionPools[BG_TEAM_HORDE].GetPlayerCount() < m_selectionPools[BG_TEAM_ALLIANCE].GetPlayerCount())
         j = BG_TEAM_HORDE;
     if ((sWorld.getConfig(CONFIG_UINT32_BATTLEGROUND_INVITATION_TYPE) != 0)
+            && bgTypeId != BATTLEGROUND_AV
             && m_selectionPools[BG_TEAM_HORDE].GetPlayerCount() >= minPlayers && m_selectionPools[BG_TEAM_ALLIANCE].GetPlayerCount() >= minPlayers)
     {
         //we will try to invite more groups to team with less players indexed by j
@@ -841,7 +842,7 @@ bool BattleGroundQueue::CheckCreateNewBg(BattleGroundTypeId bgTypeId, BattleGrou
         m_selectionPools[BG_TEAM_ALLIANCE].Init();
         m_selectionPools[BG_TEAM_HORDE].Init();
 
-        if (CheckNormalMatch(bracketId, minPlayersPerTeam, maxPlayersPerTeam))
+        if (CheckNormalMatch(bgTypeId, bracketId, minPlayersPerTeam, maxPlayersPerTeam))
         {
             BattleGround* newBg = sBattleGroundMgr.CreateNewBattleGround(bgTypeId, bracketId);
             if (!newBg)
