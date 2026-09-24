@@ -675,7 +675,7 @@ void Player::SatisfyItemRequirements(ItemPrototype const* pItem)
     }
 
     // Set required honor rank
-    auto playerRank = (sWorld.getConfig(CONFIG_BOOL__PVP_EQUIP_REQUIREMENTS) && sWorld.GetWowPatch() < WOW_PATCH_106) ? m_honorMgr.GetRank().rank : m_honorMgr.GetHighestRank().rank;
+    auto playerRank = (sWorld.getConfig(CONFIG_BOOL_ACCURATE_PVP_EQUIP_REQUIREMENTS) && sWorld.GetWowPatch() < WOW_PATCH_106) ? m_honorMgr.GetRank().rank : m_honorMgr.GetHighestRank().rank;
     if (playerRank < (uint8)pItem->RequiredHonorRank)
     {
         HonorRankInfo rank;
